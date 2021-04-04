@@ -13,7 +13,7 @@
 	<artifactId>cadpessoas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Cadastro de pessoas de pweb 2020.2</name>
-	<description>Um crud de cadastro de pessoas de PWeb 2020.2</description>
+	<description>Um CRUD de Cadastro de Pessoas da disciplina de PWeb 2020.2</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
