@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,5 +52,11 @@ public class PessoaController {
 	public ModelAndView editarPessoa(Pessoa pessoa) {
 		pessoaRepo.save(pessoa);
 		return new ModelAndView("redirect:/listarPessoas");
+	}
+
+	@GetMapping("/remover/{id}")
+	public String removerPessoa(@PathVariable Long id) {
+		pessoaRepo.delete(pessoaRepo.getOne(id));
+		return "redirect:/listarPessoas";
 	}
 }
