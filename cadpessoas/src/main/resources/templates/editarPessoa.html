@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta  name="Codigo secreto" content="1237037444">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Web</title>
+</head>
+<body>
+	<ul>
+        <li><a href="index.html">Início</a></li><hr>
+		<li><a  href="noticias.html">Canaias de notícias</a></li><hr>
+        <li><a href="adicionarPessoas.html">Adicionar pesssoas</a></li>
+        <li><a href="listarPessoas.html">listar pessoas</a></li><hr>
+        <li><a href="sobre.html">Sobre o site</a></li>
+        <li><a href="contato.html">Mande um e-Mail</a></li>
+    </ul>
+    
+    <div class="conteudo">
+        <h1>Formulário para edição de pessoas:</h1>
+        <form action="adicionadaComSucesso.html" method="get">
+            <label for="nome">Nome completo *:</label>
+            <input type="text" name="nome" id="nome" placeholder="seu Nome Completo"><br><br>
+            <label for="">Data de Nacimento *:</label>
+            <input type="date" id="data"  placeholder="Ex.: dd/mm/aaaa"><br><br>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="nome@dominio.com"><br><br>
+            
+            <label for="e-mail"></label>
+            <label for="sexo">Sexo *:</label><br>
+            <input type="radio" name="genero" id="Masculino" value="masculino">
+            <label for="sexo">Masculino</label><br>
+            <input type="radio" name="genero" id="feminino" value="feminino">
+            <label for="sexo">Feminino</label><br>
+            <input type="radio" name="genero" id="naoInformar" value="naoInformar">
+            <label for="sexo">Não informar</label><br><br>
+            
+           
+      
+            <input class="button" type="reset" value="Limpar">
+            <input class="button" type="submit" value="cadastrar!">
+            <br><br><label for="">* campo obriggatorio</label>
+            
+        </form>
+    </div>
+	
+</body>
+</html>
