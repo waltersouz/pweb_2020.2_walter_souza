@@ -20,21 +20,21 @@
     
     <div class="conteudo">
         <h1>Formulário para cadastro de pessoas:</h1>
-        <form action="adicionadaComSucesso.html" method="get">
+        <form th:action="@{/adicionarPessoa}" th:object="${pessoa}" method="POST">
             <label for="nome">Nome completo *:</label>
-            <input type="text" name="nome" id="nome" placeholder="seu Nome Completo"><br><br>
+            <input type="text" name="nome" th:field="*{nome}" id="nome" placeholder="seu Nome Completo"><br><br>
             <label for="">Data de Nacimento *:</label>
-            <input type="date" id="data"  placeholder="Ex.: dd/mm/aaaa"><br><br>
+            <input type="date" th:field="*{dataNascimento}" id="data"  placeholder="Ex.: dd/mm/aaaa"><br><br>
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="nome@dominio.com"><br><br>
+            <input type="email" th:field="*{email}" name="email" id="email" placeholder="nome@dominio.com"><br><br>
             
             <label for="e-mail"></label>
             <label for="sexo">Sexo *:</label><br>
-            <input type="radio" name="genero" id="Masculino" value="masculino">
+            <input type="radio" th:field="*{genero}" name="genero" id="Masculino" value="masculino">
             <label for="sexo">Masculino</label><br>
-            <input type="radio" name="genero" id="feminino" value="feminino">
+            <input type="radio" th:field="*{genero}" name="genero" id="feminino" value="feminino">
             <label for="sexo">Feminino</label><br>
-            <input type="radio" name="genero" id="naoInformar" value="naoInformar">
+            <input type="radio" name="genero" th:field="*{genero}" id="naoInformar" value="naoInformar">
             <label for="sexo">Não informar</label><br><br>
             
            
