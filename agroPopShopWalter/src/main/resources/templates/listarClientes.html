@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Codigo secreto" content="1726125705">
-	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="/style/style.css">
 	<title>Web</title>
 </head>
 
@@ -16,8 +16,8 @@
 		<hr>
 		<li><a href="/public/noticias.html">Canais de notícias</a></li>
 		<hr>
-		<li><a href="/adicionarPessoa">Adicionar pesssoas</a></li>
-		<li><a class="active" href="listarPessoas.html">listar pessoas</a></li>
+		<li><a href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a class="active" href="/cliente/listarClientes">Listar Clientes</a></li>
 		<hr>
 		<li><a href="/public/sobre.html">Sobre o site</a></li>
 		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
@@ -27,23 +27,27 @@
 		<table>
 			<tr>
 				<th>Nome completo</th>
+				<th>Endereço</th>
+				<th>CEP</th>
 				<th>Data de Nacimento</th>
 				<th>e-Mail</th>
 				<th>sexo</th>
 				<th>Editar</th>
 				<th>Remover</th>
 			</tr>
-			<tr th:each="pessoa: ${pessoas}">
-				<td th:text="${pessoa.nome}"></td>
-				<td th:text="${#temporals.format(pessoa.dataNascimento, 'dd/MM/yyy')}"></td>
+			<tr th:each="cliente: ${clientes}">
+				<td th:text="${cliente.nomeCompleto}"></td>
+				<td th:text="${cliente.endereco}"></td>
+				<td th:text="${cliente.cep}"></td>
+				<td th:text="${#temporals.format(cliente.dataNascimento, 'dd/MM/yyy')}"></td>
                 <td>
-					<a th:href="'mailto:'+${pessoa.email}" th:text="${pessoa.email}"></a>
+					<a th:href="'mailto:'+${cliente.eMail}" th:text="${cliente.eMail}"></a>
 				</td>
-				<td th:text="${pessoa.genero}"></td>
+				<td th:text="${cliente.genero}"></td>
 				<td>
-					<a th:href="@{/editar/{id}(id=${pessoa.id})}">Editar</a>
+					<a th:href="@{/cliente/editar/{id}(id=${cliente.codigo})}">Editar</a>
 				</td>
-                <td><a th:href="@{/remover/{id}(id=${pessoa.id})}">Remover</a></td>
+                <td><a th:href="@{/cliente/remover/{id}(id=${cliente.codigo})}">Remover</a></td>
 			</tr>
           </table>
     </div>

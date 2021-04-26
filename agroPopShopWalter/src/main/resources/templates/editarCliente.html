@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt_br">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta  name="Codigo secreto" content="1726125705">
@@ -14,17 +14,19 @@
 		<hr>
 		<li><a href="/public/noticias.html">Canais de notícias</a></li>
 		<hr>
-		<li><a class="active" href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
-		<li><a  href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a class="active" href="/cliente/listarClientes">Listar Clientes</a></li>
 		<hr>
 		<li><a href="/public/sobre.html">Sobre o site</a></li>
 		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
 	</ul>
     
     <div class="conteudo">
-        <h1>Formulário para cadastro de pessoas:</h1>
-        <form th:action="@{/cliente/adicionaCliente}" th:object="${cliente}" method="POST">
-            <label for="nome">Nome completo *:</label>
+        <h1>Formulário para edição de pessoas:</h1>
+        <form th:action="@{/cliente/editar}" th:object="${cliente}" method="POST">
+        	<input hidden type="text" name="codigo" th:field="*{codigo}" id="codigo"><br><br>
+            
+           <label for="nome">Nome completo *:</label>
             <input type="text" name="nome" th:field="*{nomeCompleto}" id="nome" placeholder="Seu Nome Completo"><br><br>
             <label for="nome">Endereço *:</label>
             <input type="text" name="endereco" th:field="*{endereco}" id="endereco" placeholder="Rua Ernesto Nogueira"><br><br>
@@ -48,7 +50,8 @@
            
       
             <input class="button" type="reset" value="Limpar">
-            <input class="button" type="submit" value="Cadastrar!">
+            <input class="button" type="submit" value="Editar!">
+            <br><br><label for="">* campo obrigatório</label>
             
         </form>
     </div>
