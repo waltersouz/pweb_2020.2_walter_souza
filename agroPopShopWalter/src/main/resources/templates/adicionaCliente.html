@@ -20,9 +20,11 @@
     
     <div class="conteudo">
         <h1>Formulário para cadastro de pessoas:</h1>
-        <form th:action="@{/adicionarPessoa}" th:object="${pessoa}" method="POST">
+        <form th:action="@{/adicionarCliente}" th:object="${cliente}" method="POST">
             <label for="nome">Nome completo *:</label>
             <input type="text" name="nome" th:field="*{nome}" id="nome" placeholder="seu Nome Completo"><br><br>
+             <label for="nome">Endereço *:</label>
+            <input type="text" name="endereco" th:field="*{endereco}" id="endereco" placeholder="Rua Ernesto Nogueira"><br><br>
             <label for="">Data de Nacimento *:</label>
             <input type="date" th:field="*{dataNascimento}" id="data"  placeholder="Ex.: dd/mm/aaaa"><br><br>
             <label for="email">E-mail</label>
