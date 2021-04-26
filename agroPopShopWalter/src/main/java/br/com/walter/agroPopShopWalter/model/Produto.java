@@ -32,7 +32,7 @@ public class Produto implements Serializable{/**
 	private int altura; 
 	private int largura;
 	private int profundidade;
-	private int peso; 
-	private int preço;
+	private double peso; 
+	private double preco;
 
 }

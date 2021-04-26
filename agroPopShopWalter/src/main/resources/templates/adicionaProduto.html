@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta  name="Codigo secreto" content="1930856732">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Web</title>
+</head>
+<body>
+	<ul>
+		<li><a   href="/">Início</a></li>
+		<hr>
+		<li><a href="/public/noticias.html">Canais de notícias</a></li>
+		<hr>
+		<li><a href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a  href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a class="active"  href="/produto/adicionaProduto">Adicionar Produtos</a></li>
+		<li><a href="/produto/listarProdutos">Listar Produtos</a></li>
+		<hr>
+		<li><a href="/public/sobre.html">Sobre o site</a></li>
+		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
+	</ul>
+    
+    <div class="conteudo">
+        <h1>Formulário para cadastro de produtos:</h1>
+        <form th:action="@{/produto/adicionaProduto}" th:object="${produto}" method="POST">
+            <label for="nome">Nome *:</label>
+            <input type="text" name="nome" th:field="*{nome}" id="nome" placeholder="Seu Nome Completo"><br><br>
+            <label for="marca">Marca *:</label>
+            <input type="text" name="marca" th:field="*{marca}" id="marca" placeholder=""><br><br>
+            
+             <label for="altura">Altura *:</label>
+            <input type="number" name="altura" th:field="*{altura}" id="altura" ><br><br>
+           
+            <label for="largura">Largura*</label>
+            <input type="number" th:field="*{largura}" name="largura" id="largura" ><br><br>
+            
+          	 <label for="profundidade">Profundidade*</label>
+            <input type="number" th:field="*{profundidade}" name="profundidade" id="profundidade"><br><br>
+            
+           	 <label for="peso">Peso*</label>
+            <input type="number" th:field="*{peso}" step="any" name="peso" id="peso" ><br><br>
+      
+      		<label for="preco">Preço*</label>
+            <input type="number" th:field="*{preco}" step="any" name="preco" id="preco" ><br><br>
+            <input class="button" type="reset" value="Limpar">
+            <input class="button" type="submit" value="Cadastrar!">
+            
+        </form>
+    </div>
+	
+</body>
+</html>

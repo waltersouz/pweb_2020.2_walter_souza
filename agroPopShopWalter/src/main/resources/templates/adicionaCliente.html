@@ -4,7 +4,7 @@
     <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta  name="Codigo secreto" content="1726125705">
+    <meta  name="Codigo secreto" content="1930856732">
     <link rel="stylesheet" href="/style/style.css">
     <title>Web</title>
 </head>
@@ -16,13 +16,15 @@
 		<hr>
 		<li><a class="active" href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
 		<li><a  href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a href="/produto/adicionaProduto">Adicionar Produtos</a></li>
+		<li><a href="/produto/listarProdutos">Listar Produtos</a></li>
 		<hr>
 		<li><a href="/public/sobre.html">Sobre o site</a></li>
 		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
 	</ul>
     
     <div class="conteudo">
-        <h1>Formulário para cadastro de pessoas:</h1>
+        <h1>Formulário para cadastro de clientes:</h1>
         <form th:action="@{/cliente/adicionaCliente}" th:object="${cliente}" method="POST">
             <label for="nome">Nome completo *:</label>
             <input type="text" name="nome" th:field="*{nomeCompleto}" id="nome" placeholder="Seu Nome Completo"><br><br>

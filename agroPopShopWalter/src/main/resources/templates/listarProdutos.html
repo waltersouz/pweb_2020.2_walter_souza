@@ -17,9 +17,9 @@
 		<li><a href="/public/noticias.html">Canais de notícias</a></li>
 		<hr>
 		<li><a href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
-		<li><a class="active" href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a href="/cliente/listarClientes">Listar Clientes</a></li>
 		<li><a href="/produto/adicionaProduto">Adicionar Produtos</a></li>
-		<li><a href="/produto/listarProdutos">Listar Produtos</a></li>
+		<li><a class="active" href="/produto/listarProdutos">Listar Produtos</a></li>
 		<hr>
 		<li><a href="/public/sobre.html">Sobre o site</a></li>
 		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
@@ -28,28 +28,28 @@
 	<div class="conteudo">
 		<table>
 			<tr>
-				<th>Nome completo</th>
-				<th>Endereço</th>
-				<th>CEP</th>
-				<th>Data de Nacimento</th>
-				<th>e-Mail</th>
-				<th>sexo</th>
+				<th>Nome</th>
+				<th>Marca</th>
+				<th>Altura</th>
+				<th>Largura</th>
+				<th>Profundidade</th>
+				<th>Peso</th>
+				<th>Preço</th>
 				<th>Editar</th>
 				<th>Remover</th>
 			</tr>
-			<tr th:each="cliente: ${clientes}">
-				<td th:text="${cliente.nomeCompleto}"></td>
-				<td th:text="${cliente.endereco}"></td>
-				<td th:text="${cliente.cep}"></td>
-				<td th:text="${#temporals.format(cliente.dataNascimento, 'dd/MM/yyy')}"></td>
-                <td>
-					<a th:href="'mailto:'+${cliente.eMail}" th:text="${cliente.eMail}"></a>
-				</td>
-				<td th:text="${cliente.genero}"></td>
+			<tr th:each="produto: ${produtos}">
+				<td th:text="${produto.nome}"></td>
+				<td th:text="${produto.marca}"></td>
+				<td th:text="${produto.altura}"></td>
+				<td th:text="${produto.largura}"></td>
+				<td th:text="${produto.profundidade}"></td>
+				<td th:text="${produto.peso}"></td>
+				<td th:text="${produto.preco}"></td>
 				<td>
-					<a th:href="@{/cliente/editar/{id}(id=${cliente.codigo})}">Editar</a>
+					<a th:href="@{/produto/editar/{id}(id=${produto.codigo})}">Editar</a>
 				</td>
-                <td><a th:href="@{/cliente/remover/{id}(id=${cliente.codigo})}">Remover</a></td>
+                <td><a th:href="@{/produto/remover/{id}(id=${produto.codigo})}">Remover</a></td>
 			</tr>
           </table>
     </div>
