@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Codigo secreto" content="1930856732">
+	<link rel="stylesheet" href="/style/style.css">
+	<title>Web</title>
+</head>
+
+<body>
+	<ul>
+		<li><a   href="/">Início</a></li>
+		<hr>
+		<li><a href="/public/noticias.html">Canais de notícias</a></li>
+		<hr>
+		<li><a class="" href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a href="/cliente/adicionaDependente">Adicionar Dependente</a></li>
+		<li><a href="/cliente/listarDependentes">Listar Dependentes</a></li>
+		<li><a href="/produto/adicionaProduto">Adicionar Produtos</a></li>
+		<li><a href="/produto/listarProdutos">Listar Produtos</a></li>
+		<li><a href="/pedido/adicionaPedido">Adicionar Pedido</a></li>
+		<li><a class="active" href="/produto/listarPedidos">Listar Pedidos</a></li>
+		<hr>
+		<li><a href="/public/sobre.html">Sobre o site</a></li>
+		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
+	</ul>
+
+	<div class="conteudo">
+		<table>
+			<tr>
+				<th>Cliente</th>
+				<th>Produto</th>
+				<th>Quantidade</th>
+				<th>Valor Unitário</th>
+				<th>Total</th>
+				<th>Total com imposto</th>
+				<th>Forma de pagamento</th>
+				<th>Número do cartão</th>
+				<th>Data de cadastro</th>
+				<th>Editar</th>
+				<th>Remover</th>
+			</tr>
+			<tr th:each="p: ${pedidos}">
+				<td th:text="${p.cliente.nomeCompleto}"></td>
+				<td th:text="${p.produto.nome}"></td>
+				<td th:text="${p.quantidade}"></td>
+				<td th:text="${p.valorUnitario}"></td>
+				<td th:text="${p.total}"></td>
+				<td th:text="${p.imposto}"></td>
+				<td th:text="${p.formaPagamento}"></td>
+				<td th:text="${p.numeroCartao}"></td>
+				<td th:text="${#temporals.format(p.dataCadastro, 'dd/MM/yyy')}"></td>
+				<td>
+					<a th:href="@{/pedido/editar/{id}(id=${p.codigo})}">Editar</a>
+				</td>
+                <td><a th:href="@{/pedido/remover/{id}(id=${p.codigo})}">Remover</a></td>
+			</tr>
+          </table>
+    </div>
+</body>
+</html>
