@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Codigo secreto" content="1930856732">
+	<link rel="stylesheet" href="/style/style.css">
+	<title>Web</title>
+</head>
+
+<body>
+	<ul>
+		<li><a   href="/">Início</a></li>
+		<hr>
+		<li><a href="/public/noticias.html">Canais de notícias</a></li>
+		<hr>
+		<li><a class="" href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a  href="/cliente/adicionaDependente">Adicionar Dependente</a></li>
+		<li><a  href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a class="active" href="/cliente/listarDependentes">Listar Dependentes</a></li>
+		<li><a href="/produto/adicionaProduto">Adicionar Produtos</a></li>
+		<li><a  href="/produto/listarProdutos">Listar Produtos</a></li>
+		<hr>
+		<li><a href="/public/sobre.html">Sobre o site</a></li>
+		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
+	</ul>
+
+	<div class="conteudo">
+		<table>
+			<tr>
+				<th>Cliente</th>
+				<th>Nome completo</th>
+				<th>Data de Nacimento</th>
+				<th>sexo</th>
+				<th>Editar</th>
+				<th>Remover</th>
+			</tr>
+			<tr th:each="d: ${dependentes}">
+				<td th:text="${d.cliente.nomeCompleto}"></td>
+				<td th:text="${d.nomeCompleto}"></td>
+				<td th:text="${#temporals.format(d.dataNascimento, 'dd/MM/yyy')}"></td>
+				<td th:text="${d.genero}"></td>
+				<td>
+					<a th:href="@{/cliente/editarDependente/{id}(id=${d.codigo})}">Editar</a>
+				</td>
+                <td><a th:href="@{/cliente/removerDependente/{id}(id=${d.codigo})}">Remover</a></td>
+			</tr>
+          </table>
+    </div>
+</body>
+</html>

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.walter.agroPopShopWalter.model.Cliente;
+import br.com.walter.agroPopShopWalter.model.Dependente;
 import br.com.walter.agroPopShopWalter.repository.ClienteRepository;
+import br.com.walter.agroPopShopWalter.repository.DependenteRepository;
 
 @Controller
 @RequestMapping("/cliente")
@@ -17,6 +19,9 @@ public class ClienteController {
 	
 	@Autowired
 	private ClienteRepository repo;
+	
+	@Autowired
+	private DependenteRepository dependenteRepository;
 
 	@GetMapping(value = "/adicionaCliente")
 	public ModelAndView telaAdiciona() {
@@ -38,6 +43,13 @@ public class ClienteController {
 		return mv;
 	}
 	
+	@GetMapping(value = "/listarDependentes")
+	public ModelAndView listaDependentes() {
+		ModelAndView mv = new ModelAndView("listarDependentes");
+		mv.addObject("dependentes", dependenteRepository.findAll());
+		return mv;
+	}
+	
 	@PostMapping(value = "/editar")
 	public ModelAndView editar(Cliente pessoa) {
 		repo.save(pessoa);
@@ -55,5 +67,38 @@ public class ClienteController {
 	public String remover(@PathVariable Long id) {
 		repo.delete(repo.getOne(id));
 		return "redirect:/cliente/listarClientes";
+	}
+	
+	@GetMapping(value = "/adicionaDependente")
+	public ModelAndView adicionaDependente() {
+		ModelAndView mv = new ModelAndView("adicionaDependente");
+		mv.addObject("clientes", repo.findAll());
+		mv.addObject("dependente", new Dependente());
+		return mv;		
+	}
+	
+	@PostMapping(value = "/adicionaDependente")
+	public String adicionaDependente(Dependente dependente) {
+		dependenteRepository.save(dependente);
+		return "redirect:/cliente/listarDependentes";		
+	}
+	
+	@PostMapping(value = "/editarDependente")
+	public ModelAndView editarDependentes(Dependente dependente) {
+		dependenteRepository.save(dependente);
+		return new ModelAndView("redirect:/cliente/listarDependentes");
+	}
+	
+	@GetMapping("/editarDependente/{id}")
+	public ModelAndView editarTelaDependente(@PathVariable Long id) {
+		ModelAndView mav = new ModelAndView("editarDependente");
+		mav.addObject("dependente", dependenteRepository.findById(id));
+		return mav;
+	}
+	
+	@GetMapping(value = "/remover/{id}")
+	public String removerDependente(@PathVariable Long id) {
+		dependenteRepository.delete(dependenteRepository.getOne(id));
+		return "redirect:/cliente/listarDependentes";
 	}
 }
