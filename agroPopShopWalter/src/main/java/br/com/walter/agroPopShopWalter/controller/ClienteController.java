@@ -96,7 +96,7 @@ public class ClienteController {
 		return mav;
 	}
 	
-	@GetMapping(value = "/remover/{id}")
+	@GetMapping(value = "/removerDependente/{id}")
 	public String removerDependente(@PathVariable Long id) {
 		dependenteRepository.delete(dependenteRepository.getOne(id));
 		return "redirect:/cliente/listarDependentes";
