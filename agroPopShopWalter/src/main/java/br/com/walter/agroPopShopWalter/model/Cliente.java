@@ -47,4 +47,7 @@ public class Cliente implements Serializable {
 
 	@OneToMany(mappedBy = "cliente", cascade = { CascadeType.REMOVE })
 	private List<Dependente> dependentes;
+	
+	@OneToMany(mappedBy = "cliente", cascade = { CascadeType.REMOVE })
+	private List<Pedido> pedidos;
 }
