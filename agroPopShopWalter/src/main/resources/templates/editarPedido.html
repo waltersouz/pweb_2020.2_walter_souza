@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta  name="Codigo secreto" content="1930856732">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Web</title>
+</head>
+<body>
+	<ul>
+		<li><a   href="/">Início</a></li>
+		<hr>
+		<li><a href="/public/noticias.html">Canais de notícias</a></li>
+		<hr>
+		<li><a href="/cliente/adicionaCliente">Adicionar Clientes</a></li>
+		<li><a class="active" href="/cliente/listarClientes">Listar Clientes</a></li>
+		<li><a  href="/cliente/adicionaDependente">Adicionar Dependente</a></li>
+		<li><a  href="/cliente/listarDependentes">Listar Dependentes</a></li>
+		<li><a href="/produto/adicionaProduto">Adicionar Produtos</a></li>
+		<li><a href="/produto/listarProdutos">Listar Produtos</a></li>
+		<hr>
+		<li><a href="/public/sobre.html">Sobre o site</a></li>
+		<li><a href="/public/contato.html">Mande um e-Mail</a></li>
+	</ul>
+    
+    <div class="conteudo">
+        <h1>Formulário para edição de clientes:</h1>
+        <form th:action="@{/pedido/editar}" th:object="${pedido}" method="POST">
+        	<input hidden type="text" name="codigo" th:field="*{codigo}" id="codigo">
+           Selecione o cliente :
+			<select th:field="*{cliente.codigo}">
+				<option th:each="cliente : ${clientes}" th:value="${cliente.codigo}" th:text="${cliente.nomeCompleto}">
+					{cliente.nomeCompleto}
+				</option>
+			</select>
+			<br/><br/>
+			
+			Selecione o produto :
+			<select th:field="*{produto.codigo}">
+				<option th:each="produto : ${produtos}" th:value="${produto.codigo}" th:text="${produto.nome}">
+					{produto.nomeProduto}
+				</option>
+			</select>
+			<br/><br/>
+            <label for="quantidade">Quantidade *:</label>
+            <input type="number" name="nome" th:field="*{quantidade}" id="quantidade"><br><br>
+    
+            
+            <label for="e-mail"></label>
+            <label for="sexo">Forma de Pagamento *:</label><br>
+            <input type="radio" th:field="*{formaPagamento}" id="cartao" name="formaPagamento" value="Cartão">
+            <label for="cartao">Cartão</label><br>
+            <input type="radio" th:field="*{formaPagamento}" id="dinheiro" name="formaPagamento" value="Dinheiro">
+            <label for="dinheiro">Dinheiro</label><br>
+            
+            <label for="cartao">Nº do Cartão *:</label>
+            <input type="text" name="cartao" th:field="*{numeroCartao}" id="cartao"><br><br>
+           
+      
+            <input class="button" type="reset" value="Limpar">
+            <input class="button" type="submit" value="Cadastrar!">
+            
+        </form>
+    </div>
+	
+</body>
+</html>
