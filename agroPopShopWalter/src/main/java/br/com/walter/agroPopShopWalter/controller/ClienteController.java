@@ -92,6 +92,7 @@ public class ClienteController {
 	@GetMapping("/editarDependente/{id}")
 	public ModelAndView editarTelaDependente(@PathVariable Long id) {
 		ModelAndView mav = new ModelAndView("editarDependente");
+		mav.addObject("clientes", repo.findAll());
 		mav.addObject("dependente", dependenteRepository.findById(id));
 		return mav;
 	}
