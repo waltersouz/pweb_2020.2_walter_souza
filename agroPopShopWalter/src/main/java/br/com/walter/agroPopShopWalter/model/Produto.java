@@ -22,23 +22,29 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Produto implements Serializable{/**
-	 * 
-	 */
+public class Produto implements Serializable {
+	/**
+	* 
+	*/
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nome;
-	private String marca; 
-	private int altura; 
+	private String marca;
+	private int altura;
 	private int largura;
 	private int profundidade;
-	private double peso; 
+	private double peso;
 	private double preco;
-	
+
 	@OneToMany(mappedBy = "produto", cascade = { CascadeType.REMOVE })
 	private List<Pedido> pedidos;
+
+	public int getVolumeProduto() {
+		int v = altura * largura * profundidade;
+		return v;
+	}
 
 }
