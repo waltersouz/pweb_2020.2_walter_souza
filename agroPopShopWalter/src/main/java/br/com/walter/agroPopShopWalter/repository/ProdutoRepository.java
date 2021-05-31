@@ -8,4 +8,6 @@ import br.com.walter.agroPopShopWalter.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	List<Produto> findAllByOrderByNomeAsc();
+	
+	List<Produto> findAllByNomeContainingIgnoreCaseOrderByNome(String nome);
 }

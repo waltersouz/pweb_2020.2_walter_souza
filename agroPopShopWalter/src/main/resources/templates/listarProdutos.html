@@ -30,6 +30,17 @@
 	</ul>
 
 	<div class="conteudo">
+		<div>
+			<br/>
+			<br/>
+			<h1>Buscar por nome</h1>
+			<form th:action="@{/produto/listarProdutos}" th:object="${produto}" method="POST">
+            	<label for="nome">Nome:</label>
+            	 <input type="text" name="nome" th:field="*{nome}" id="nome"><br><br>
+            	 <input class="button" type="submit" value="Buscar">
+			</form>
+		</div>
+		<br/>
 		<table>
 			<tr>
 				<th>Nome</th>

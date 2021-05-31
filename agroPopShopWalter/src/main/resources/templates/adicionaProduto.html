@@ -31,7 +31,7 @@
         <h1>Formulário para cadastro de produtos:</h1>
         <form th:action="@{/produto/adicionaProduto}" th:object="${produto}" method="POST">
             <label for="nome">Nome *:</label>
-            <input type="text" name="nome" th:field="*{nome}" id="nome" placeholder="Seu Nome Completo"><br><br>
+            <input type="text" name="nome" th:field="*{nome}" id="nome" placeholder=""><br><br>
             <label for="marca">Marca *:</label>
             <input type="text" name="marca" th:field="*{marca}" id="marca" placeholder=""><br><br>
             

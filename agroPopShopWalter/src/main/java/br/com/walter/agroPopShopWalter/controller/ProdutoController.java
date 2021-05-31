@@ -33,7 +33,20 @@ public class ProdutoController {
 	@GetMapping(value = "/listarProdutos")
 	public ModelAndView lista() {
 		ModelAndView mv = new ModelAndView("listarProdutos");
+		mv.addObject("produto", new Produto());
 		mv.addObject("produtos", repo.findAll());
+		return mv;
+	}
+	
+	@PostMapping(value = "/listarProdutos")
+	public ModelAndView lista(Produto p) {
+		ModelAndView mv = new ModelAndView("listarProdutos");
+		mv.addObject("produto", p);
+		if(p.getNome().isEmpty() || p.getNome().isEmpty()) {
+			mv.addObject("produtos", repo.findAll());
+		} else {
+			mv.addObject("produtos", repo.findAllByNomeContainingIgnoreCaseOrderByNome(p.getNome()));
+		}
 		return mv;
 	}
 	
