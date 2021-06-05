@@ -22,7 +22,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Produto implements Serializable {
+public class Produto implements Serializable, Comparable<Produto> {
 	/**
 	* 
 	*/
@@ -46,5 +46,23 @@ public class Produto implements Serializable {
 		int v = altura * largura * profundidade;
 		return v;
 	}
+	
+	public double getFrete() {
+		return peso * 1000 * 123456;
+	}
+
+	@Override
+	public int compareTo(Produto o) {
+		if(getVolumeProduto() > o.getVolumeProduto() ) {
+			return 1;
+		}
+		
+		if(getVolumeProduto() < o.getVolumeProduto() ) {
+			return -1;
+		}
+		
+		return 0;
+	}
+
 
 }

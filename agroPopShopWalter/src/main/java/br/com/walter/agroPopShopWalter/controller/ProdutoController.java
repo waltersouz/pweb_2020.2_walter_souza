@@ -1,5 +1,9 @@
 package br.com.walter.agroPopShopWalter.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +51,16 @@ public class ProdutoController {
 		} else {
 			mv.addObject("produtos", repo.findAllByNomeContainingIgnoreCaseOrderByNome(p.getNome()));
 		}
+		return mv;
+	}
+	
+	@GetMapping(value = "/freteMarte")
+	public ModelAndView listaPorFrete() {
+		ModelAndView mv = new ModelAndView("freteMarte");
+		List<Produto> produtos = new ArrayList<>();
+		produtos = repo.findAll();
+		Collections.sort(produtos, Collections.reverseOrder());
+		mv.addObject("produtos", produtos);
 		return mv;
 	}
 	
