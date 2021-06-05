@@ -1,15 +1,20 @@
 package br.com.walter.agroPopShopWalter.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,6 +43,9 @@ public class Produto implements Serializable, Comparable<Produto> {
 	private int profundidade;
 	private double peso;
 	private double preco;
+	
+	@Column(name = "data_cadastro")
+	private LocalDateTime dataCadastro;
 
 	@OneToMany(mappedBy = "produto", cascade = { CascadeType.REMOVE })
 	private List<Pedido> pedidos;
@@ -49,6 +57,10 @@ public class Produto implements Serializable, Comparable<Produto> {
 	
 	public double getFrete() {
 		return peso * 1000 * 123456;
+	}
+	
+	public double desconto() {
+		return preco * (1 - 0.03018735);
 	}
 
 	@Override

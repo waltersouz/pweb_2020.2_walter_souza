@@ -1,7 +1,9 @@
 package br.com.walter.agroPopShopWalter.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ public class ProdutoController {
 	
 	@PostMapping("/adicionaProduto")
 	public String adicionarPessoa(Produto produto) {
+		produto.setDataCadastro(LocalDateTime.now());
 		repo.save(produto);
 		return "redirect:/produto/listarProdutos";
 	}
@@ -60,6 +63,23 @@ public class ProdutoController {
 		List<Produto> produtos = new ArrayList<>();
 		produtos = repo.findAll();
 		Collections.sort(produtos, Collections.reverseOrder());
+		mv.addObject("produtos", produtos);
+		return mv;
+	}
+	
+	@GetMapping(value = "/desconto")
+	public ModelAndView desconto() {
+		ModelAndView mv = new ModelAndView("desconto");
+		List<Produto> produtos = new ArrayList<>();
+		produtos = repo.findTop4ByOrderByDataCadastroDesc();
+		Collections.sort(produtos, new Comparator<Produto>() {
+			public int compare(Produto o1, Produto o2) {
+				Double x1 = o1.desconto();
+				Double x2 = o2.desconto();				
+				return x1.compareTo(x2);
+			};
+		});
+		Collections.reverse(produtos);
 		mv.addObject("produtos", produtos);
 		return mv;
 	}
